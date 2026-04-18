@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Outfit", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: oklch(0.05 0 0);
+  --color-foreground: oklch(0.98 0 0);
+
+  --color-brand: oklch(0.65 0.25 260); /* Deep Electric Blue */
+  --color-accent: oklch(0.7 0.2 300); /* Neon Purple */
+
+  --color-card: oklch(0.1 0.01 0 / 0.6);
+  --color-card-foreground: oklch(0.98 0 0);
+
+  --color-popover: oklch(0.1 0.01 0 / 0.95);
+  --color-popover-foreground: oklch(0.98 0 0);
+
+  --color-primary: oklch(0.65 0.25 260);
+  --color-primary-foreground: oklch(0.05 0 0);
+
+  --color-secondary: oklch(0.15 0.02 0);
+  --color-secondary-foreground: oklch(0.98 0 0);
+
+  --color-muted: oklch(0.15 0.02 0);
+  --color-muted-foreground: oklch(0.6 0 0);
+
+  --color-border: oklch(0.2 0.02 0 / 0.5);
+  --color-input: oklch(0.2 0.02 0);
+  --color-ring: oklch(0.65 0.25 260 / 0.5);
+
+  --radius-lg: 1.25rem;
+  --radius-md: calc(1.25rem - 2px);
+  --radius-sm: calc(1.25rem - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
+  }
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  }
+}
+
+@layer base {
+  :root {
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.1 0 0);
+  }
+
+  .dark {
+    --background: oklch(0.05 0 0);
+    --foreground: oklch(0.98 0 0);
+  }
+
+  * {
+    @apply border-border outline-brand/30;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans selection:bg-brand/30 selection:text-white antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass-morphism {
+    @apply bg-card backdrop-blur-xl border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)];
+  }
+  
+  .glass-border {
+    @apply border border-white/10;
+  }
+  
+  .text-premium {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-white/90 to-white/40;
+  }
+
+  .text-brand-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand to-accent;
+  }
+
+  .glow-brand {
+    @apply shadow-[0_0_20px_oklch(0.65_0.25_260_/_0.3)];
+  }
+}

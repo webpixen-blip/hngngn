@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -16,16 +15,14 @@ const outfit = Outfit({
   display: "swap",
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Aura Blog | Premium Modern Publication",
   description: "A futuristic, glassmorphism-inspired blog platform for high-end content.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body

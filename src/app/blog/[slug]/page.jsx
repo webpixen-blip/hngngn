@@ -29,7 +29,7 @@ const DUMMY_POST = {
   author: { name: "Aura Team", image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=2080&auto=format&fit=crop" }
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+export default function BlogPostPage({ params }) {
   return (
     <>
       <Navbar />
